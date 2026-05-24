@@ -1,0 +1,98 @@
+{
+  "validUsers": [
+    {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "expectedTitle": "Swag Labs"
+    },
+    {
+      "username": "problem_user",
+      "password": "secret_sauce",
+      "expectedTitle": "Swag Labs"
+    }
+  ],
+  "invalidUsers": [
+    {
+      "username": "locked_out_user",
+      "password": "secret_sauce",
+      "expectedError": "Epic sadface: Sorry, this user has been locked out."
+    },
+    {
+      "username": "wrong_user",
+      "password": "wrong_pass",
+      "expectedError": "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+      "username": "",
+      "password": "",
+      "expectedError": "Epic sadface: Username is required"
+    }
+  ],
+  "checkoutUsers": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "zipCode": "10001",
+      "scenario": "valid checkout"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "zipCode": "90210",
+      "scenario": "valid checkout second user"
+    }
+  ],
+  "invalidCheckout": [
+    {
+      "firstName": "",
+      "lastName": "Doe",
+      "zipCode": "10001",
+      "expectedError": "Error: First Name is required",
+      "scenario": "empty first name"
+    },
+    {
+      "firstName": "John",
+      "lastName": "",
+      "zipCode": "10001",
+      "expectedError": "Error: Last Name is required",
+      "scenario": "empty last name"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "zipCode": "",
+      "expectedError": "Error: Postal Code is required",
+      "scenario": "empty zip code"
+    }
+  ],
+  "negativeInputs": [
+    {
+      "username": "' OR '1'='1",
+      "password": "' OR '1'='1",
+      "expectedError": "Epic sadface: Username and password do not match any user in this service",
+      "scenario": "SQL injection"
+    },
+    {
+      "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "password": "secret_sauce",
+      "expectedError": "Epic sadface: Username and password do not match any user in this service",
+      "scenario": "very long username"
+    },
+    {
+      "username": "<script>alert(1)</script>",
+      "password": "secret_sauce",
+      "expectedError": "Epic sadface: Username and password do not match any user in this service",
+      "scenario": "XSS attempt"
+    }
+  ],
+  "products": [
+    {
+      "name": "Sauce Labs Backpack",
+      "expectedPrice": "$29.99"
+    },
+    {
+      "name": "Sauce Labs Bike Light",
+      "expectedPrice": "$9.99"
+    }
+  ]
+}
